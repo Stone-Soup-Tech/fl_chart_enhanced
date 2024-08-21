@@ -1,0 +1,97 @@
+name: Deploy
+# This workflow is MANUALLY triggered from Github.
+# It starts by checking out the code, setting up Flutter, and installing the project dependencies.
+# Then it bumps the version based on the branch name.
+# The changes are committed and pushed to the repository.
+# Next, a Git tag is created with the new version and pushed to the repository.
+# Finally, the workflow triggers a deployment to Codemagic.
+# Whenever you manually trigger a workflow, please wait for it to finish before doing a merge between the branch you called the workflow on and any other branch.
+# This ensures that the commit in which the version is bumped is properly pushed to Github.
+
+# Configure manual trigger
+on:
+  workflow_dispatch
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - name: Bumping version! ⚠️ Please wait for the workflow to finish! ⚠️
+        run: |
+          BUMP_TYPE=${{ github.event.inputs.bump_type }}
+
+          # Get the current version and split the numbers into an array
+          CURRENT_VERSION=$(dart run cider version)
+          IFS='.' read -ra versionArray <<< "$CURRENT_VERSION"
+
+          # Increment either the patch, minor or major, depending on their value.
+          # 0.5.8 -> 0.5.9, 0.5.9 -> 0.6.0, 0.9.9 -> 1.0.0
+          if [[ "${versionArray[2]}" == "9" ]]; then
+            versionArray[2]="0"
+            if [[ "${versionArray[1]}" == "9" ]]; then
+              versionArray[1]="0"
+              versionArray[0]="$((${versionArray[0]} + 1))"
+            else
+              versionArray[1]="$((${versionArray[1]} + 1))"
+            fi
+          else
+            versionArray[2]="$((${versionArray[2]} + 1))"
+          fi
+
+          # Construct the new version into a string
+          IFS='.';NEW_VERSION="${versionArray[*]}";IFS=$' \t\n'
+
+          # Set the new version
+          dart run cider version $NEW_VERSION
+
+          # Save the the new version and new tag in env variables
+          echo "NEW_VERSION=$NEW_VERSION" >> "$GITHUB_ENV"
+          echo "NEW_TAG=$NEW_VERSION" >> "$GITHUB_ENV"
+
+          git config --global user.name "Continuous Integration"
+          git config --global user.email "username@users.noreply.github.com"
+          
+          # Push the commit with the new version
+          git add .
+          git commit -m "Bump version to $NEW_VERSION"
+          git push
+
+          git tag -a $NEW_VERSION -m "Version $NEW_VERSION"
+          git push origin $NEW_VERSION
+
+      - name: Generate release notes
+        run: |
+          # Fetch the last used tag
+          LAST_TAG=$(git describe --tags --abbrev=0 --match "v*")
+
+          # Get the generated release notes using the Github API
+          RESPONSE=$(gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/$GITHUB_REPOSITORY/releases/generate-notes \
+            -f tag_name='${{ env.NEW_TAG }}' \
+            -f target_commitish='main' \
+            -f previous_tag_name=$LAST_TAG)
+
+          # Retrieve the release notes from the response and save them to a file for the next step.
+          echo $RESPONSE | jq -r ".body" >> release_notes.txt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          name: "${{ env.NEW_TAG }}"
+          tag: ${{ env.NEW_TAG }}
+          bodyFile: release_notes.txt
+          generateReleaseNotes: false
+          prerelease: false
+  
