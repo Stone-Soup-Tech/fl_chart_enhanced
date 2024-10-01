@@ -1190,6 +1190,14 @@ List<LineTooltipItem?> lineChartGetTooltipItems(List<LineBarSpot> list) {
   return list.map((s) => lineTooltipItem1).toList();
 }
 
+EdgeInsets lineChartGetTooltipPadding(LineBarSpot touchedSpot) {
+  return const EdgeInsets.all(0.1);
+}
+
+int lineChartGetTooltipMargin(LineBarSpot touchedSpot) {
+  return 33;
+}
+
 Color lineChartGetGreenColor(LineBarSpot touchedSpot) {
   return Colors.green;
 }
@@ -1198,25 +1206,25 @@ Color lineChartGetRedColor(LineBarSpot touchedSpot) {
   return Colors.red;
 }
 
-LineTouchTooltipData lineTouchTooltipData1 = LineTouchTooltipData(
-  getTooltipPadding: (_) => const EdgeInsets.all(0.1),
+LineTouchTooltipData lineTouchTooltipData1 = const LineTouchTooltipData(
+  getTooltipPadding: lineChartGetTooltipPadding,
   getTooltipColor: lineChartGetGreenColor,
   maxContentWidth: 12,
   getTooltipItems: lineChartGetTooltipItems,
   fitInsideHorizontally: true,
   tooltipRoundedRadius: 12,
-  getTooltipMargin: (_) => 33,
-  tooltipBorder: const BorderSide(color: Colors.red),
+  getTooltipMargin: lineChartGetTooltipMargin,
+  tooltipBorder: BorderSide(color: Colors.red),
 );
-LineTouchTooltipData lineTouchTooltipData1Clone = LineTouchTooltipData(
-  getTooltipPadding: (_) => const EdgeInsets.all(0.1),
+LineTouchTooltipData lineTouchTooltipData1Clone = const LineTouchTooltipData(
+  getTooltipPadding: lineChartGetTooltipPadding,
   getTooltipColor: lineChartGetGreenColor,
   maxContentWidth: 12,
   getTooltipItems: lineChartGetTooltipItems,
   fitInsideHorizontally: true,
   tooltipRoundedRadius: 12,
-  getTooltipMargin: (_) => 33,
-  tooltipBorder: const BorderSide(color: Colors.red),
+  getTooltipMargin: lineChartGetTooltipMargin,
+  tooltipBorder: BorderSide(color: Colors.red),
 );
 
 LineTouchTooltipData lineTouchTooltipData2 = LineTouchTooltipData(
