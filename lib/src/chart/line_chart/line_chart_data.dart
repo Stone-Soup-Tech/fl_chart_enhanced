@@ -1164,8 +1164,8 @@ Color defaultLineTooltipColor(LineBarSpot touchedSpot) {
 /// (length should be equal to the [touchedSpots.length]), to set padding
 /// of tooltip popup.
 typedef GetLineTooltipPadding = EdgeInsets Function(
-    LineBarSpot touchedSpot,
-    );
+  LineBarSpot touchedSpot,
+);
 
 /// Default implementation for [LineTouchTooltipData.getTooltipPadding].
 EdgeInsets defaultLineTooltipPadding(LineBarSpot touchedSpot) {
