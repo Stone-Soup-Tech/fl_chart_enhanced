@@ -70,7 +70,7 @@ jobs:
       - name: Generate release notes
         run: |
           # Fetch the last used tag
-          LAST_TAG=$(git describe --tags --abbrev=0 --match "v*")
+          LAST_TAG=$(git describe --tags --abbrev=0)
 
           # Get the generated release notes using the Github API
           RESPONSE=$(gh api \
