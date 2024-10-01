@@ -1,4 +1,4 @@
-<a href="https://youtu.be/vYe0RY1nCAA"><img src="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/images/bar_chart/bar_chart_video_thumbnail.png" width=540></a>
+<a href="https://www.youtube.com/watch?v=vYe0RY1nCAA&list=PL1-_rCwRcnbNpvodmbt43O81wMUdBv8-a"><img src="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/images/bar_chart/bar_chart_video_thumbnail.png" width=540></a>
 
 ### How to use
 ```dart
@@ -19,7 +19,7 @@ When you change the chart's state, it animates to the new state internally (usin
 |:---------------|:---------------|:-------|
 |barGroups| list of [BarChartGroupData ](#BarChartGroupData) to show the bar lines together, you can provide one item per group to show normal bar chart|[]|
 |groupsSpace| space between groups, it applies only when the [alignment](#BarChartAlignment) is `BarChartAlignment.start`, `BarChartAlignment.center` or `BarChartAlignment.end`|16|
-|alignment| a [BarChartAlignment](#BarChartAlignment) that determines the alignment of the barGroups, inspired by [Flutter MainAxisAlignment](https://docs.flutter.io/flutter/rendering/MainAxisAlignment-class.html)| BarChartAlignment.spaceBetween|
+|alignment| a [BarChartAlignment](#BarChartAlignment) that determines the alignment of the barGroups, inspired by [Flutter MainAxisAlignment](https://docs.flutter.io/flutter/rendering/MainAxisAlignment-class.html)| BarChartAlignment.spaceEvenly|
 |titlesData| check the [FlTitlesData](base_chart.md#FlTitlesData)|FlTitlesData()|
 |axisTitleData| check the [FlAxisTitleData](base_chart.md#FlAxisTitleData)| FlAxisTitleData()|
 |rangeAnnotations| show range annotations behind the chart, check [RangeAnnotations](base_chart.md#RangeAnnotations) | RangeAnnotations()|
@@ -27,8 +27,8 @@ When you change the chart's state, it animates to the new state internally (usin
 |barTouchData| [BarTouchData](#bartouchdata-read-about-touch-handling) holds the touch interactivity details|BarTouchData()|
 |gridData| check the [FlGridData](base_chart.md#FlGridData)|FlGridData()|
 |borderData| check the [FlBorderData](base_chart.md#FlBorderData)|FlBorderData()|
-|maxY| gets maximum y of y axis, if null, value will be read from the input barGroups | null|
-|minY| gets minimum y of y axis, if null, value will be read from the input barGroups | null|
+|maxY| gets maximum y of y axis, if null, value will be read from the input barGroups (But it is more performant if you provide them) | null|
+|minY| gets minimum y of y axis, if null, value will be read from the input barGroups (But it is more performant if you provide them) | null|
 |baselineY| defines the baseline of y-axis | 0|
 |extraLinesData| allows extra horizontal lines to be drawn on the chart. Vertical lines are ignored when used with BarChartData, please see [#1149](https://github.com/imaNNeo/fl_chart/issues/1149), check [ExtraLinesData](base_chart.md#ExtraLinesData)|ExtraLinesData()|
 

@@ -19,8 +19,8 @@ Your financial support acts as fuel for fl_chart's development. [Support here](h
 				<td>
 					<a href="https://github.com/sponsors/imaNNeo">
 						<picture>
-							<source media="(prefers-color-scheme: dark)" srcset="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/sponsors/become_a_hero_dark.png">
-							<source media="(prefers-color-scheme: light)" srcset="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/sponsors/become_a_hero_light.png">
+							<source media="(prefers-color-scheme: dark)" srcset="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/sponsors/become_a_sponsor_dark.png">
+							<source media="(prefers-color-scheme: light)" srcset="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/sponsors/become_a_sponsor_light.png">
 							<img alt="Become a sponsor" >
 						</picture>
 					</a>
@@ -47,7 +47,7 @@ Your financial support acts as fuel for fl_chart's development. [Support here](h
 ### Overview
 FL Chart is a highly customizable Flutter chart library that supports **[Line Chart](https://app.flchart.dev/#/line)**, **[Bar Chart](https://app.flchart.dev/#/bar)**, **[Pie Chart](https://app.flchart.dev/#/pie)**, **[Scatter Chart](https://app.flchart.dev/#/scatter)**, and **[Radar Chart](https://app.flchart.dev/#/radar)**.
 
-<a href="https://youtu.be/hVRU-kpKNjQ"><img src="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/images/overview_thumbnail.png"></p></a>
+<a href="https://www.youtube.com/watch?v=hVRU-kpKNjQ&list=PL1-_rCwRcnbNpvodmbt43O81wMUdBv8-a"><img src="https://github.com/imaNNeo/fl_chart/raw/main/repo_files/images/overview_thumbnail.png"></p></a>
 
 
 ### Chart Types
