@@ -9,9 +9,9 @@ name: Deploy Auto
 # Whenever you manually trigger a workflow, please wait for it to finish before doing a merge between the branch you called the workflow on and any other branch.
 # This ensures that the commit in which the version is bumped is properly pushed to Github.
 
-# Configure automatic trigger
+# Configure manual trigger
 on:
-  pull_request:
+  pull_request_target:
     types:
       - closed
     branches:
@@ -22,5 +22,4 @@ jobs:
     permissions:
       contents: write
     if: github.event.pull_request.merged == true
-    uses: Stone-Soup-Tech/fl_chart_enhanced/.github/workflows/deploy.yaml@main
-    secrets: inherit
+    uses: ./.github/workflows/deploy.yaml
