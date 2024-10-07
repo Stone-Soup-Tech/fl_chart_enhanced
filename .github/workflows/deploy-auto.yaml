@@ -17,7 +17,7 @@ on:
       - main
 
 jobs:
-  Deploy Auto:
+  DeployAuto:
     if: github.event.pull_request.merged == true
     uses: ./.github/workflows/deploy.yaml
   
