@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Auto
 # This workflow is MANUALLY triggered from Github.
 # It starts by checking out the code, setting up Flutter, and installing the project dependencies.
 # Then it bumps the version based on the branch name.
@@ -19,5 +19,5 @@ on:
 jobs:
   Deploy Auto:
     if: github.event.pull_request.merged == true
-    uses: Stone-Soup-Tech/fl_chart_enhanced/.github/workflows/deploy.yml@main
+    uses: ./.github/workflows/deploy.yaml
   
