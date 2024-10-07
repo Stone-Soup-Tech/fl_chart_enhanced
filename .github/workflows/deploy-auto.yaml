@@ -18,6 +18,8 @@ on:
 
 jobs:
   DeployAuto:
+    permissions:
+      contents: write
     if: github.event.pull_request.merged == true
     uses: ./.github/workflows/deploy.yaml
   
