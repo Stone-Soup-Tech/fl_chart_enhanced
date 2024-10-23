@@ -73,6 +73,7 @@ jobs:
         run: |
           # Fetch the last used tag
           LAST_TAG=$(git describe --tags --abbrev=0)
+          echo $LAST_TAG
 
           # Get the generated release notes using the Github API
           RESPONSE=$(gh api \
@@ -84,6 +85,9 @@ jobs:
             -f target_commitish='main' \
             -f previous_tag_name=$LAST_TAG)
 
+          # Print the response for debugging reasons
+          echo $RESPONSE
+          
           # Retrieve the release notes from the response and save them to a file for the next step.
           echo $RESPONSE | jq -r ".body" >> release_notes.txt
         env:
