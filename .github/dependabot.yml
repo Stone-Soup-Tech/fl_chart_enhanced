@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     assignees:
       - "dependabot"
     commit-message:
@@ -16,8 +16,18 @@ updates:
   - package-ecosystem: "pub"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    reviewers:
+      - "MihMihai"
     assignees:
       - "dependabot"
+    labels:
+      - "dependencies"
+    versioning-strategy: widen # uses "increase" for apps and "widen" for libraries.
+    groups:
+      dart:
+        applies-to: version-updates
+        patterns:
+          - "*"       # A wildcard that matches all dependencies in the package
     commit-message:
       prefix: "chore: "
