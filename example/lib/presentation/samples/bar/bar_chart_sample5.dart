@@ -222,28 +222,28 @@ class BarChartSample5State extends State<BarChartSample5> {
               0,
               -value1,
               AppColors.contentColorGreen
-                  .withOpacity(isTouched ? shadowOpacity * 2 : shadowOpacity),
+                  .withValues(alpha: isTouched ? shadowOpacity * 2 : shadowOpacity),
               const BorderSide(color: Colors.transparent),
             ),
             BarChartRodStackItem(
               -value1,
               -(value1 + value2),
               AppColors.contentColorYellow
-                  .withOpacity(isTouched ? shadowOpacity * 2 : shadowOpacity),
+                  .withValues(alpha: isTouched ? shadowOpacity * 2 : shadowOpacity),
               const BorderSide(color: Colors.transparent),
             ),
             BarChartRodStackItem(
               -(value1 + value2),
               -(value1 + value2 + value3),
               AppColors.contentColorPink
-                  .withOpacity(isTouched ? shadowOpacity * 2 : shadowOpacity),
+                  .withValues(alpha: isTouched ? shadowOpacity * 2 : shadowOpacity),
               const BorderSide(color: Colors.transparent),
             ),
             BarChartRodStackItem(
               -(value1 + value2 + value3),
               -(value1 + value2 + value3 + value4),
               AppColors.contentColorBlue
-                  .withOpacity(isTouched ? shadowOpacity * 2 : shadowOpacity),
+                  .withValues(alpha: isTouched ? shadowOpacity * 2 : shadowOpacity),
               const BorderSide(color: Colors.transparent),
             ),
           ],
@@ -328,12 +328,12 @@ class BarChartSample5State extends State<BarChartSample5> {
               getDrawingHorizontalLine: (value) {
                 if (value == 0) {
                   return FlLine(
-                    color: AppColors.borderColor.withOpacity(0.1),
+                    color: AppColors.borderColor.withValues(alpha: 0.1),
                     strokeWidth: 3,
                   );
                 }
                 return FlLine(
-                  color: AppColors.borderColor.withOpacity(0.05),
+                  color: AppColors.borderColor.withValues(alpha: 0.05),
                   strokeWidth: 0.8,
                 );
               },

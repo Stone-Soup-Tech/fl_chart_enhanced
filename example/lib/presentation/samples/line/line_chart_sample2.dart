@@ -48,7 +48,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
               'avg',
               style: TextStyle(
                 fontSize: 12,
-                color: showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                color: showAvg ? Colors.white.withValues(alpha: 0.5) : Colors.white,
               ),
             ),
           ),
@@ -184,7 +184,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
             show: true,
             gradient: LinearGradient(
               colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
+                  .map((color) => color.withValues(alpha: 0.3))
                   .toList(),
             ),
           ),
@@ -278,10 +278,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
               colors: [
                 ColorTween(begin: gradientColors[0], end: gradientColors[1])
                     .lerp(0.2)!
-                    .withOpacity(0.1),
+                    .withValues(alpha: 0.1),
                 ColorTween(begin: gradientColors[0], end: gradientColors[1])
                     .lerp(0.2)!
-                    .withOpacity(0.1),
+                    .withValues(alpha: 0.1),
               ],
             ),
           ),
