@@ -448,8 +448,8 @@ void main() {
       final paint = verificationResult.captured.single as Paint;
       verificationResult.called(1);
       expect(
-        paint.color.value,
-        barData.gradient?.colors.first.value ?? barData.color?.value,
+        paint.color.toString(),
+        barData.gradient?.colors.first.toString() ?? barData.color?.toString(),
       );
     });
   });
@@ -1448,7 +1448,7 @@ void main() {
       expect(results.length, 2);
 
       for (final item in results) {
-        expect((item['paint_color'] as Color).alpha, 0);
+        expect((item['paint_color'] as Color).a, 0);
         expect(item['paint_stroke_width'], 18);
       }
     });
@@ -1630,7 +1630,7 @@ void main() {
       expect(results.length, 2);
 
       for (final item in results) {
-        expect((item['paint_color'] as Color).alpha, 0);
+        expect((item['paint_color'] as Color).a, 0);
         expect(item['paint_stroke_width'], 18);
       }
     });
@@ -2160,9 +2160,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.cyanAccent.value),
+              equals(Colors.cyanAccent.toString()),
             ),
           ),
           holder.data.extraLinesData.horizontalLines[0].dashArray,
@@ -2215,9 +2215,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.cyanAccent.value),
+              equals(Colors.cyanAccent.toString()),
             ),
           ),
           holder.data.extraLinesData.verticalLines[0].dashArray,
@@ -2282,9 +2282,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.cyanAccent.value),
+              equals(Colors.cyanAccent.toString()),
             ),
           ),
           holder.data.extraLinesData.verticalLines[0].dashArray,
@@ -3481,7 +3481,7 @@ void main() {
         minX: 0,
         maxX: 10,
         titlesData: const FlTitlesData(show: false),
-        backgroundColor: MockData.color1.withOpacity(0),
+        backgroundColor: MockData.color1.withValues(alpha: 0),
       );
 
       final lineChartPainter = LineChartPainter();

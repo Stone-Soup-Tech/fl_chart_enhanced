@@ -2203,9 +2203,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.red),
+              equals(Colors.red.toString()),
             ),
           ),
           holder.data.extraLinesData.verticalLines[0].dashArray,
@@ -2300,9 +2300,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.red.value),
+              equals(Colors.red.toString()),
             ),
           ),
           holder.data.extraLinesData.horizontalLines[0].dashArray,
@@ -2396,9 +2396,9 @@ void main() {
           any,
           captureThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.cyanAccent.value),
+              equals(Colors.cyanAccent.toString()),
             ),
           ),
           [100, 20],
@@ -2407,7 +2407,7 @@ void main() {
         results.add({
           'from': inv.positionalArguments[0] as Offset,
           'to': inv.positionalArguments[1] as Offset,
-          'paint_color': (inv.positionalArguments[2] as Paint).color.value,
+          'paint_color': (inv.positionalArguments[2] as Paint).color.toString(),
           'paint_stroke_width':
               (inv.positionalArguments[2] as Paint).strokeWidth,
         });
@@ -2421,7 +2421,7 @@ void main() {
 
       expect(results.length, 1);
 
-      expect(results[0]['paint_color'], Colors.cyanAccent.value);
+      expect(results[0]['paint_color'], Colors.cyanAccent.toString());
       expect(results[0]['paint_stroke_width'], 90);
 
       Utils.changeInstance(utilsMainInstance);
@@ -2480,9 +2480,9 @@ void main() {
           any,
           argThat(
             const TypeMatcher<Paint>().having(
-              (p0) => p0.color.value,
+              (p0) => p0.color.toString(),
               'colors match',
-              equals(Colors.cyanAccent.value),
+              equals(Colors.cyanAccent.toString()),
             ),
           ),
           holder.data.extraLinesData.horizontalLines[0].dashArray,

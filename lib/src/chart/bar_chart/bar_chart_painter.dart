@@ -311,7 +311,7 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
           }
 
           // draw border stroke
-          if (borderSide.width > 0 && borderSide.color.opacity > 0) {
+          if (borderSide.width > 0 && borderSide.color.a > 0) {
             _barStrokePaint
               ..color = borderSide.color
               ..strokeWidth = borderSide.width;
@@ -527,7 +527,9 @@ class BarChartPainter extends AxisChartPainter<BarChartData> {
     PaintHolder<BarChartData> holder,
   ) {
     if (stackItem.borderSide.width == 0 ||
-        stackItem.borderSide.color.opacity == 0) return;
+        stackItem.borderSide.color.a == 0) {
+      return;
+    }
     RRect strokeBarRect;
     if (index == 0) {
       strokeBarRect = RRect.fromLTRBAndCorners(

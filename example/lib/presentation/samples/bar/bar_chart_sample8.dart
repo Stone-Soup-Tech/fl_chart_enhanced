@@ -9,7 +9,7 @@ class BarChartSample8 extends StatefulWidget {
   BarChartSample8({super.key});
 
   final Color barBackgroundColor =
-      AppColors.contentColorWhite.darken().withOpacity(0.3);
+      AppColors.contentColorWhite.darken().withValues(alpha: 0.3);
   final Color barColor = AppColors.contentColorWhite;
 
   @override
